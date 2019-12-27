@@ -1,0 +1,4 @@
+*.lock
+package.xml
+vendor
+.idea

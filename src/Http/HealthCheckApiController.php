@@ -4,6 +4,7 @@ namespace Saritasa\LaravelHealthCheck\Http;
 
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
 use Saritasa\LaravelHealthCheck\Contracts\CheckResultContract;
 use Saritasa\LaravelHealthCheck\HealthCheckManager;
 use Illuminate\Routing\Controller;
@@ -42,6 +43,10 @@ class HealthCheckApiController extends Controller
                 return [$healthCheckResult->getType() => $healthCheckResult->isSuccess()];
             });
 
-        return new JsonResponse($checksResults);
+        $statusCode = $checksResults->count() === $checksResults->filter()->count()
+            ? Response::HTTP_OK
+            : Response::HTTP_INTERNAL_SERVER_ERROR;
+
+        return new JsonResponse($checksResults, $statusCode);
     }
 }

@@ -5,10 +5,10 @@ namespace Saritasa\LaravelHealthCheck;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use InvalidArgumentException;
 use Saritasa\LaravelHealthCheck\Checkers\HealthCheckersFactory;
-use Saritasa\LaravelHealthCheck\Contracts\CheckResultContract;
+use Saritasa\LaravelHealthCheck\Contracts\CheckResult;
 use Illuminate\Support\Collection;
 
-final class HealthCheckManager
+final class HealthChecker
 {
     /**
      * Health checkers instances factory.
@@ -39,7 +39,7 @@ final class HealthCheckManager
     /**
      * Returns health checks of or available service in application.
      *
-     * @return Collection|CheckResultContract[]
+     * @return Collection|CheckResult[]
      *
      * @throws BindingResolutionException
      */
@@ -59,12 +59,12 @@ final class HealthCheckManager
      *
      * @param string $type Type of service to health check it
      *
-     * @return CheckResultContract
+     * @return CheckResult
      *
      * @throws InvalidArgumentException
      * @throws BindingResolutionException
      */
-    public function check(string $type): CheckResultContract
+    public function check(string $type): CheckResult
     {
         if (!in_array($type, $this->availableCheckers)) {
             throw new InvalidArgumentException();

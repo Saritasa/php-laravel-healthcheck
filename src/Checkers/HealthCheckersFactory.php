@@ -40,11 +40,11 @@ class HealthCheckersFactory
      *
      * @param string $type Type to build service
      *
-     * @return ServiceHealthCheckerContract
+     * @return ServiceHealthChecker
      *
      * @throws BindingResolutionException
      */
-    public function build(string $type): ServiceHealthCheckerContract
+    public function build(string $type): ServiceHealthChecker
     {
         if (!$this->registeredCheckers->has($type)) {
             throw new InvalidArgumentException("$type ");
@@ -65,8 +65,8 @@ class HealthCheckersFactory
      */
     public function register(string $type, string $concrete): void
     {
-        if (!is_subclass_of($concrete, ServiceHealthCheckerContract::class)) {
-            throw new RuntimeException("$concrete must implement " . ServiceHealthCheckerContract::class);
+        if (!is_subclass_of($concrete, ServiceHealthChecker::class)) {
+            throw new RuntimeException("$concrete must implement " . ServiceHealthChecker::class);
         }
 
         $this->registeredCheckers->put($type, $concrete);

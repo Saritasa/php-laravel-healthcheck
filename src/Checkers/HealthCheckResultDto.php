@@ -3,9 +3,9 @@
 namespace Saritasa\LaravelHealthCheck\Checkers;
 
 use Saritasa\Dto;
-use Saritasa\LaravelHealthCheck\Contracts\CheckResultContract;
+use Saritasa\LaravelHealthCheck\Contracts\CheckResult;
 
-class HealthCheckResultDto extends Dto implements CheckResultContract
+class HealthCheckResultDto extends Dto implements CheckResult
 {
     public const IS_SUCCESS = 'isSuccess';
     public const TYPE = 'type';

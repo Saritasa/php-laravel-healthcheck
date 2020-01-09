@@ -21,7 +21,7 @@ class HealthCheckServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(HealthCheckManager::class, function (Container $container) {
+        $this->app->bind(HealthChecker::class, function (Container $container) {
             $healthCheckersFactory = $container->make(HealthCheckersFactory::class);
 
             $checkersConfig = $this->app['config']->get('health_check.checkers');
@@ -30,7 +30,7 @@ class HealthCheckServiceProvider extends ServiceProvider
                 $healthCheckersFactory->register($type, $checkerClass);
             }
 
-            return new HealthCheckManager($healthCheckersFactory, array_keys($checkersConfig));
+            return new HealthChecker($healthCheckersFactory, array_keys($checkersConfig));
         });
     }
 

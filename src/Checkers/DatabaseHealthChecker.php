@@ -2,11 +2,11 @@
 
 namespace Saritasa\LaravelHealthCheck\Checkers;
 
-use Saritasa\LaravelHealthCheck\Contracts\CheckResultContract;
+use Saritasa\LaravelHealthCheck\Contracts\CheckResult;
 use Illuminate\Database\DatabaseManager;
 use Throwable;
 
-class DatabaseHealthChecker implements ServiceHealthCheckerContract
+class DatabaseHealthChecker implements ServiceHealthChecker
 {
     /**
      * Laravel's database manager.
@@ -28,7 +28,7 @@ class DatabaseHealthChecker implements ServiceHealthCheckerContract
     /**
      * {@inheritDoc}
      */
-    public function check(): CheckResultContract
+    public function check(): CheckResult
     {
         $isSuccess = true;
         $errorMessage = null;

@@ -5,7 +5,7 @@ namespace Saritasa\LaravelHealthCheck\Contracts;
 /**
  * Contract for health checks results.
  */
-interface CheckResultContract
+interface CheckResult
 {
     /**
      * Returns health check result.

@@ -5,8 +5,8 @@ namespace Saritasa\LaravelHealthCheck\Http;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
-use Saritasa\LaravelHealthCheck\Contracts\CheckResultContract;
-use Saritasa\LaravelHealthCheck\HealthCheckManager;
+use Saritasa\LaravelHealthCheck\Contracts\CheckResult;
+use Saritasa\LaravelHealthCheck\HealthChecker;
 use Illuminate\Routing\Controller;
 
 class HealthCheckApiController extends Controller
@@ -14,16 +14,16 @@ class HealthCheckApiController extends Controller
     /**
      * Health checkers manager.
      *
-     * @var HealthCheckManager
+     * @var HealthChecker
      */
     protected $healthCheckManager;
 
     /**
      * HealthCheckApiController constructor.
      *
-     * @param HealthCheckManager $healthCheckManager Health checkers manager.
+     * @param HealthChecker $healthCheckManager Health checkers manager.
      */
-    public function __construct(HealthCheckManager $healthCheckManager)
+    public function __construct(HealthChecker $healthCheckManager)
     {
         $this->healthCheckManager = $healthCheckManager;
     }
@@ -39,7 +39,7 @@ class HealthCheckApiController extends Controller
     {
         $checksResults = $this->healthCheckManager
             ->checkAll()
-            ->mapWithKeys(function (CheckResultContract $healthCheckResult) {
+            ->mapWithKeys(function (CheckResult $healthCheckResult) {
                 return [$healthCheckResult->getType() => $healthCheckResult->isSuccess()];
             });
 

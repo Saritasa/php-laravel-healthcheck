@@ -5,7 +5,7 @@ namespace Saritasa\LaravelHealthCheck\Checkers;
 use Illuminate\Support\Facades\Storage;
 use Saritasa\LaravelHealthCheck\Contracts\CheckResult;
 
-class S3HealthChecker  implements ServiceHealthChecker
+class S3HealthChecker implements ServiceHealthChecker
 {
     /**
      * S3 client.

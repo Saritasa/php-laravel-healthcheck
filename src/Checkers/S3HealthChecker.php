@@ -2,7 +2,6 @@
 
 namespace Saritasa\LaravelHealthCheck\Checkers;
 
-use Aws\S3\S3Client;
 use Illuminate\Support\Facades\Storage;
 use Saritasa\LaravelHealthCheck\Contracts\CheckResult;
 

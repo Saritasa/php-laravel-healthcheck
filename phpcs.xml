@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<ruleset name="PHP_CodeSniffer">
+    <description>The coding standard for laravel package</description>
+
+    <file>src</file>
+    <file>tests</file>
+
+    <exclude-pattern>*.json</exclude-pattern>
+    <exclude-pattern>*.xml</exclude-pattern>
+
+    <arg name="colors"/>
+    <arg value="p"/>
+
+    <rule ref="PSR2"/>
+    <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace" />
+    <rule ref="Generic.Commenting.DocComment.MissingShort" />
+    <rule ref="Generic.Commenting.DocComment.SpacingBeforeTags" />
+    <rule ref="Generic.Commenting.DocComment.SpacingBeforeTags" />
+    <rule ref="MySource.Commenting.FunctionComment.InvalidReturn" />
+    <rule ref="MySource.Commenting.FunctionComment.MissingParamComment" />
+    <rule ref="MySource.Commenting.FunctionComment.TypeHintMissing">
+        <exclude-pattern>/src/Repositories/Repository.php</exclude-pattern>
+    </rule>
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax" />
+    <rule ref="Generic.Classes.DuplicateClassName" />
+    <rule ref="Generic.CodeAnalysis.EmptyStatement" />
+    <rule ref="Generic.CodeAnalysis.ForLoopWithTestFunctionCall" />
+    <rule ref="Generic.CodeAnalysis.JumbledIncrementer" />
+    <rule ref="Generic.CodeAnalysis.UnconditionalIfStatement" />
+    <rule ref="Generic.CodeAnalysis.UnnecessaryFinalModifier" />
+    <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
+    <rule ref="Generic.CodeAnalysis.UselessOverridingMethod" />
+    <rule ref="Generic.Commenting.Fixme" />
+    <rule ref="Generic.Commenting.Todo" />
+    <rule ref="Generic.ControlStructures.InlineControlStructure" />
+
+    <!-- Slevomat additioanl rules -->
+    <rule ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/Operators/DisallowEqualOperatorsSniff.php"/>
+    <rule ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/Arrays/TrailingArrayCommaSniff.php"/>
+    <rule ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/Classes/TraitUseDeclarationSniff.php"/>
+    <rule ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/Classes/TraitUseSpacingSniff.php">
+        <properties>
+            <property name="linesCountBeforeFirstUse" value="0"/>
+            <property name="linesCountAfterLastUseWhenLastInClass" value="0"/>
+        </properties>
+    </rule>
+
+    <rule ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/Commenting/DocCommentSpacingSniff.php">
+        <properties>
+            <property name="linesCountBeforeFirstContent" value="0"/>
+            <property name="linesCountBetweenDescriptionAndAnnotations" value="1"/>
+            <property name="linesCountBetweenDifferentAnnotationsTypes" value="1"/>
+            <property name="linesCountAfterLastContent" value="0"/>
+        </properties>
+    </rule>
+    <rule ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/Commenting/EmptyCommentSniff.php"/>
+    <rule
+            ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/ControlStructures/NewWithParenthesesSniff.php"/>
+    <rule
+            ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/Namespaces/AlphabeticallySortedUsesSniff.php"/>
+    <rule ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/Namespaces/ReferenceUsedNamesOnlySniff.php">
+        <properties>
+            <property name="searchAnnotations" value="1"/>
+        </properties>
+    </rule>
+    <rule ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/Namespaces/UnusedUsesSniff.php">
+        <properties>
+            <property name="searchAnnotations" value="1"/>
+        </properties>
+    </rule>
+    <rule
+            ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/Namespaces/UseDoesNotStartWithBackslashSniff.php"/>
+    <rule
+            ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/TypeHints/NullableTypeForNullDefaultValueSniff.php"/>
+    <rule
+            ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/TypeHints/NullTypeHintOnLastPositionSniff.php"/>
+</ruleset>
+
+

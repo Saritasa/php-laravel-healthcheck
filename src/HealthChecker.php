@@ -3,10 +3,10 @@
 namespace Saritasa\LaravelHealthCheck;
 
 use Illuminate\Contracts\Container\BindingResolutionException;
+use Illuminate\Support\Collection;
 use InvalidArgumentException;
 use Saritasa\LaravelHealthCheck\Checkers\HealthCheckersFactory;
 use Saritasa\LaravelHealthCheck\Contracts\CheckResult;
-use Illuminate\Support\Collection;
 
 final class HealthChecker
 {

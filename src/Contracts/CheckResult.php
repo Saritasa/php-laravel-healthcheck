@@ -10,7 +10,7 @@ interface CheckResult
     /**
      * Returns health check result.
      *
-     * @return bool
+     * @return boolean
      */
     public function isSuccess(): bool;
 

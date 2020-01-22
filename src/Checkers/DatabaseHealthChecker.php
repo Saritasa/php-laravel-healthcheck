@@ -2,8 +2,9 @@
 
 namespace Saritasa\LaravelHealthCheck\Checkers;
 
-use Saritasa\LaravelHealthCheck\Contracts\CheckResult;
 use Illuminate\Database\DatabaseManager;
+use Saritasa\LaravelHealthCheck\Contracts\CheckResult;
+use Saritasa\LaravelHealthCheck\Contracts\ServiceHealthChecker;
 use Throwable;
 
 class DatabaseHealthChecker implements ServiceHealthChecker

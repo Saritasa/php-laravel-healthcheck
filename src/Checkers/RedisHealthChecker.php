@@ -2,9 +2,10 @@
 
 namespace Saritasa\LaravelHealthCheck\Checkers;
 
-use Illuminate\Database\DatabaseManager;
 use Illuminate\Support\Facades\Cache;
 use Saritasa\LaravelHealthCheck\Contracts\CheckResult;
+use Saritasa\LaravelHealthCheck\Contracts\ServiceHealthChecker;
+use Throwable;
 
 class RedisHealthChecker implements ServiceHealthChecker
 {

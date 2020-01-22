@@ -5,9 +5,9 @@ namespace Saritasa\LaravelHealthCheck\Http;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
+use Illuminate\Routing\Controller;
 use Saritasa\LaravelHealthCheck\Contracts\CheckResult;
 use Saritasa\LaravelHealthCheck\HealthChecker;
-use Illuminate\Routing\Controller;
 
 class HealthCheckApiController extends Controller
 {

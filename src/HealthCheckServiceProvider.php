@@ -7,7 +7,6 @@ use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\ServiceProvider;
 use Saritasa\LaravelHealthCheck\Checkers\HealthCheckersFactory;
 
-
 /**
  * Package providers. Registers package implementation in DI container.
  * Make settings needed to correct work.

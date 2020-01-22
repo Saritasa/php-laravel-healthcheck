@@ -1,8 +1,6 @@
 <?php
 
-namespace Saritasa\LaravelHealthCheck\Checkers;
-
-use Saritasa\LaravelHealthCheck\Contracts\CheckResult;
+namespace Saritasa\LaravelHealthCheck\Contracts;
 
 /**
  * Contract for services which checks

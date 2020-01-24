@@ -4,6 +4,8 @@ namespace Saritasa\LaravelHealthCheck\Checkers;
 
 use Illuminate\Support\Facades\Storage;
 use Saritasa\LaravelHealthCheck\Contracts\CheckResult;
+use Saritasa\LaravelHealthCheck\Contracts\ServiceHealthChecker;
+use Throwable;
 
 class S3HealthChecker implements ServiceHealthChecker
 {

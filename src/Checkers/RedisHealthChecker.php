@@ -10,6 +10,21 @@ use Throwable;
 class RedisHealthChecker implements ServiceHealthChecker
 {
     /**
+     * Cache facade.
+     *
+     * @var Cache
+     */
+    protected $redisClient;
+    
+    /**
+     * RedisHealthChecker constructor.
+     */
+    public function __construct()
+    {
+        $this->redisClient = Cache::connection();
+    }
+    
+    /**
      * {@inheritDoc}
      */
     public function check(): CheckResult
@@ -17,10 +32,8 @@ class RedisHealthChecker implements ServiceHealthChecker
         $isSuccess = true;
         $errorMessage = null;
         
-        $redis = Cache::connection();
-        
         try {
-            $redis->ping();
+            $this->redisClient->ping();
         } catch (Throwable $exception) {
             $isSuccess = false;
             $errorMessage = $exception->getMessage();

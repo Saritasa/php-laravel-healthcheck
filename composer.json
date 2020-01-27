@@ -1,5 +1,7 @@
 {
     "name": "saritasa/laravel-healthcheck",
+    "description": "Package for projects health-check",
+    "license": "MIT",
     "authors": [
         {
             "name": "Eugene Mosunov",

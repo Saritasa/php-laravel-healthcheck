@@ -27,8 +27,8 @@ final class HealthChecker
     /**
      * HealthCheckManager constructor.
      *
-     * @param HealthCheckersFactory $checkersFactory
-     * @param array $availableCheckers
+     * @param HealthCheckersFactory $checkersFactory Health checkers factory
+     * @param array $availableCheckers Available checkers list
      */
     public function __construct(HealthCheckersFactory $checkersFactory, array $availableCheckers)
     {

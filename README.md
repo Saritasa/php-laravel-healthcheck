@@ -1,7 +1,13 @@
 
 # Laravel Health Check  
-  
-Package for checking the availability of project components 
+
+[![Release](https://img.shields.io/github/release/saritasa/php-laravel-healthcheck.svg)](https://github.com/Saritasa/php-laravel-healthcheck/releases)
+[![PHPv](https://img.shields.io/packagist/php-v/saritasa/laravel-healthcheck.svg)](http://www.php.net)
+[![Downloads](https://img.shields.io/packagist/dt/saritasa/laravel-healthcheck.svg)](https://packagist.org/packages/saritasa/laravel-healthcheck)
+
+Package for Laravel-based project self-diagnostics. 
+Implements basic checks (ex. if application can connect to DB server)
+and allows extensibility (ex. implement custom checks) 
   
 ## Laravel 5.5+
   

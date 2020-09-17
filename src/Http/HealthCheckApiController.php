@@ -49,8 +49,11 @@ class HealthCheckApiController extends Controller
      */
     public function check(string $checker, HealthChecker $healthChecks): JsonResponse
     {
-        $result = $healthChecks->check($checker);
-        return new JsonResponse($result->getPayload(), $result->isSuccess()
+        $checkResult = $healthChecks->check($checker);
+        $data = $checkResult->isSuccess()
+            ? $checkResult->getPayload()
+            : ['errorMessage' => $checkResult->getMessage()] + ($checkResult->getPayload() ?: []);
+        return new JsonResponse($data, $checkResult->isSuccess()
             ? Response::HTTP_OK
             : Response::HTTP_INTERNAL_SERVER_ERROR);
     }

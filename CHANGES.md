@@ -1,5 +1,9 @@
 # Changes History
 
+1.0.1
+-----
++ Add error message to response body, when check failed
+
 1.0.0
 -----
 + Implement `GET /health-check/{checker}` endpoint - allows to run single check by name from `config/health_check.php`

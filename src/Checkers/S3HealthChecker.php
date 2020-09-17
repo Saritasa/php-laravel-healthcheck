@@ -4,6 +4,8 @@ namespace Saritasa\LaravelHealthCheck\Checkers;
 
 use Illuminate\Support\Facades\Storage;
 use Saritasa\LaravelHealthCheck\Contracts\CheckResult;
+use Saritasa\LaravelHealthCheck\Contracts\ServiceHealthChecker;
+use Throwable;
 
 class S3HealthChecker implements ServiceHealthChecker
 {
@@ -13,7 +15,7 @@ class S3HealthChecker implements ServiceHealthChecker
      * @var Storage
      */
     protected $s3Client;
-    
+
     /**
      * S3HealthChecker constructor.
      *
@@ -23,7 +25,7 @@ class S3HealthChecker implements ServiceHealthChecker
     {
         $this->s3Client = Storage::cloud();
     }
-    
+
     /**
      * {@inheritDoc}
      */
@@ -31,18 +33,14 @@ class S3HealthChecker implements ServiceHealthChecker
     {
         $isSuccess = true;
         $errorMessage = null;
-        
+
         try {
             $this->s3Client->directories();
         } catch (Throwable $exception) {
             $isSuccess = false;
             $errorMessage = $exception->getMessage();
         }
-        
-        return new HealthCheckResultDto([
-            HealthCheckResultDto::IS_SUCCESS => $isSuccess,
-            HealthCheckResultDto::TYPE => 's3',
-            HealthCheckResultDto::MESSAGE => $errorMessage,
-        ]);
+
+        return new HealthCheckResultDto($errorMessage, $isSuccess);
     }
 }

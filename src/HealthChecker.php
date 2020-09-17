@@ -2,53 +2,29 @@
 
 namespace Saritasa\LaravelHealthCheck;
 
-use Illuminate\Contracts\Container\BindingResolutionException;
+use Exception;
 use Illuminate\Support\Collection;
-use InvalidArgumentException;
-use Saritasa\LaravelHealthCheck\Checkers\HealthCheckersFactory;
+use Saritasa\LaravelHealthCheck\Checkers\HealthCheckResultDto;
 use Saritasa\LaravelHealthCheck\Contracts\CheckResult;
+use Saritasa\LaravelHealthCheck\Contracts\ServiceHealthChecker;
+use Saritasa\LaravelHealthCheck\Exceptions\CheckerNotFoundException;
+use Saritasa\LaravelHealthCheck\Exceptions\InvalidCheckerException;
 
 final class HealthChecker
 {
-    /**
-     * Health checkers instances factory.
-     *
-     * @var HealthCheckersFactory
-     */
-    private $checkersFactory;
-
-    /**
-     * Available health checkers.
-     *
-     * @var string[]
-     */
-    private $availableCheckers;
-
-    /**
-     * HealthCheckManager constructor.
-     *
-     * @param HealthCheckersFactory $checkersFactory Health checkers factory
-     * @param array $availableCheckers Available checkers list
-     */
-    public function __construct(HealthCheckersFactory $checkersFactory, array $availableCheckers)
-    {
-        $this->checkersFactory = $checkersFactory;
-        $this->availableCheckers = $availableCheckers;
-    }
-
     /**
      * Returns health checks of or available service in application.
      *
      * @return Collection|CheckResult[]
      *
-     * @throws BindingResolutionException
+     * @throws InvalidCheckerException
      */
     public function checkAll(): Collection
     {
         $results = collect();
 
-        foreach ($this->availableCheckers as $type) {
-            $results->push($this->checkersFactory->build($type)->check());
+        foreach (config('health_check.checkers') as $name => $class) {
+            $results->put($name, $this->run($class));
         }
 
         return $results;
@@ -61,15 +37,39 @@ final class HealthChecker
      *
      * @return CheckResult
      *
-     * @throws InvalidArgumentException
-     * @throws BindingResolutionException
+     * @throws CheckerNotFoundException
+     * @throws InvalidCheckerException
      */
     public function check(string $type): CheckResult
     {
-        if (!in_array($type, $this->availableCheckers)) {
-            throw new InvalidArgumentException();
+        $class = config('health_check.checkers.'.$type);
+        if (!$class) {
+            throw new CheckerNotFoundException("Check type $type not configured");
+        }
+        return $this->run($class);
+    }
+
+    /**
+     * Returns health check of specific service.
+     *
+     * @param string $class Checker class to run
+     *
+     * @return CheckResult
+     *
+     * @throws InvalidCheckerException
+     */
+    private function run(string $class): CheckResult
+    {
+        if (!is_subclass_of($class, ServiceHealthChecker::class)) {
+            throw new InvalidCheckerException("Class $class is not instance of ".ServiceHealthChecker::class);
         }
 
-        return $this->checkersFactory->build($type)->check();
+        try {
+            /** @var ServiceHealthChecker $checker */
+            $checker = app($class);
+            return $checker->check();
+        } catch (Exception $exception) {
+            return new HealthCheckResultDto($exception->getMessage());
+        }
     }
 }

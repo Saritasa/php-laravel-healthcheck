@@ -15,7 +15,7 @@ $ composer require saritasa/laravel-healthcheck
 - Publish configuration file:
 
 ```bash
-php artisan vendor:publish --tag=health_check
+php artisan vendor:publish --provider="Saritasa\LaravelHealthCheck\HealthCheckServiceProvider"
 ```
 
 Configure the necessary checks in file `config/health_check.php`
@@ -27,6 +27,31 @@ Configure the necessary checks in file `config/health_check.php`
         's3' => \Saritasa\LaravelHealthCheck\Checkers\S3HealthChecker::class,
     ],
 ```  
+
+You can add more custom checks - a class implementing 
+`\Saritasa\LaravelHealthCheck\Contracts\ServiceHealthChecker::class` interface with single method `check()` 
+that must return instance of `\Saritasa\LaravelHealthCheck\Contracts\CheckResult::class`
+
+# Usage
+Package exposes endpoints to run all checks or run each check by name:
+## GET /health-check
+Runs all known checks and returns HTTP code = 200, if all checks succeeded, 500 otherwise.
+Response contains JSON with pares of check name and true/false indicating if checker completed successfully or not.
+
+## GET /health-check/{checker}
+Where **{checker}** is a key from `config/health_check.php`, ex. `GET /health-check/database`.  
+Returns HTTP code = 200, if checker reports success, 500 otherwise. 
+Response content is payload, returned by checker.
+
+## Available checkers
+#### Saritasa\LaravelHealthCheck\Checkers\DatabaseHealthChecker  
+Checks, if default connection to DB, configured in Laravel is available - tries to establish connection with server.
+
+#### Saritasa\LaravelHealthCheck\Checkers\RedisHealthChecker  
+Checks, if redis connection is available - tries to establish connection with server.
+
+#### Saritasa\LaravelHealthCheck\Checkers\S3HealthChecker  
+Checks, if application can read from default S3 bucket - tries to get enumerate entries in S3 bucket.
 
 ## Contributing  
   

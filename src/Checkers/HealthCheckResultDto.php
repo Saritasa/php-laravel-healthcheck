@@ -8,9 +8,17 @@ use Saritasa\LaravelHealthCheck\Contracts\CheckResult;
 class HealthCheckResultDto extends Dto implements CheckResult
 {
     public const IS_SUCCESS = 'isSuccess';
-    public const TYPE = 'type';
     public const MESSAGE = 'message';
     public const PAYLOAD = 'payload';
+
+    public function __construct(?string $message, bool $success = false, $payload = null)
+    {
+        parent::__construct([
+            static::MESSAGE => $message,
+            static::PAYLOAD => $payload,
+            static::IS_SUCCESS => $success,
+        ]);
+    }
 
     /**
      * Shows whether check was success or not.
@@ -46,14 +54,6 @@ class HealthCheckResultDto extends Dto implements CheckResult
     public function isSuccess(): bool
     {
         return $this->isSuccess;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getType(): string
-    {
-        return $this->type;
     }
 
     /**

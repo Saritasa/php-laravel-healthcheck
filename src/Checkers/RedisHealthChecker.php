@@ -16,20 +16,16 @@ class RedisHealthChecker implements ServiceHealthChecker
     {
         $isSuccess = true;
         $errorMessage = null;
-        
+
         $redis = Cache::connection();
-        
+
         try {
             $redis->ping();
         } catch (Throwable $exception) {
             $isSuccess = false;
             $errorMessage = $exception->getMessage();
         }
-        
-        return new HealthCheckResultDto([
-            HealthCheckResultDto::IS_SUCCESS => $isSuccess,
-            HealthCheckResultDto::TYPE => 'redis',
-            HealthCheckResultDto::MESSAGE => $errorMessage,
-        ]);
+
+        return new HealthCheckResultDto($errorMessage, $isSuccess);
     }
 }

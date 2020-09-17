@@ -41,10 +41,6 @@ class DatabaseHealthChecker implements ServiceHealthChecker
             $errorMessage = $exception->getMessage();
         }
 
-        return new HealthCheckResultDto([
-            HealthCheckResultDto::IS_SUCCESS => $isSuccess,
-            HealthCheckResultDto::TYPE => 'database',
-            HealthCheckResultDto::MESSAGE => $errorMessage,
-        ]);
+        return new HealthCheckResultDto($errorMessage, $isSuccess);
     }
 }

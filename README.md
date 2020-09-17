@@ -41,7 +41,7 @@ that must return instance of `\Saritasa\LaravelHealthCheck\Contracts\CheckResult
 # Usage
 Package exposes endpoints to run all checks or run each check by name:
 ## GET /health-check
-Runs all known checks and returns HTTP code = 200, if all checks succeeded, 500 otherwise.
+Runs all known checks and returns HTTP code = 200, if all checks succeeded, 500 otherwise.  
 Response contains JSON with pares of check name and true/false indicating if checker completed successfully or not.
 
 ## GET /health-check/{checker}
@@ -51,10 +51,10 @@ Returns payload, returned by checker. If check result is not successful, adds er
 
 ## Available checkers
 #### Saritasa\LaravelHealthCheck\Checkers\DatabaseHealthChecker  
-Checks, if default connection to DB, configured in Laravel is available - tries to establish connection with server.
+Checks, if default connection to DB, configured in Laravel is available - tries to establish connection to server.
 
 #### Saritasa\LaravelHealthCheck\Checkers\RedisHealthChecker  
-Checks, if redis connection is available - tries to establish connection with server.
+Checks, if redis connection is available - tries to establish connection to server.
 
 #### Saritasa\LaravelHealthCheck\Checkers\S3HealthChecker  
 Checks, if application can read from default S3 bucket - tries to get enumerate entries in S3 bucket.

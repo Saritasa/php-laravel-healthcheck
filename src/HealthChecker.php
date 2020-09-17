@@ -65,7 +65,11 @@ final class HealthChecker
         }
 
         try {
-            /** @var ServiceHealthChecker $checker */
+            /**
+             * Instance of checker
+             *
+             * @var ServiceHealthChecker $checker
+             */
             $checker = app($class);
             return $checker->check();
         } catch (Exception $exception) {

@@ -2,7 +2,8 @@
 
 namespace Saritasa\LaravelHealthCheck\Exceptions;
 
+use Exception;
 
-class InvalidCheckerException extends \Exception
+class InvalidCheckerException extends Exception
 {
 }

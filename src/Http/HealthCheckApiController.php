@@ -39,7 +39,7 @@ class HealthCheckApiController extends Controller
     /**
      * Run single health check by name
      *
-     * @param string $checker
+     * @param string $checker Name of checker to run
      * @param HealthChecker $healthChecks Health checkers manager.
      *
      * @throws CheckerNotFoundException

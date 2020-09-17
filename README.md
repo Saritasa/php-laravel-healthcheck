@@ -5,10 +5,10 @@ Package for checking the availability of project components
   
 ## Laravel 5.5+
   
-Install the ```saritasa/healthcheck``` package:  
+Install the ```saritasa/laravel-healthcheck``` package:  
   
 ```bash  
-$ composer require saritasa/healthcheck  
+$ composer require saritasa/laravel-healthcheck  
 ```  
 
 ## Configuration

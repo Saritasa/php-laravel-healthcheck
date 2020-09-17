@@ -34,9 +34,9 @@ Configure the necessary checks in file `config/health_check.php`
     ],
 ```  
 
-You can add more custom checks - a class implementing 
-`\Saritasa\LaravelHealthCheck\Contracts\ServiceHealthChecker::class` interface with single method `check()` 
-that must return instance of `\Saritasa\LaravelHealthCheck\Contracts\CheckResult::class`
+You can add more custom checks - just add a class implementing 
+`\Saritasa\LaravelHealthCheck\Contracts\ServiceHealthChecker` interface with single method `check()` 
+that must return instance of `\Saritasa\LaravelHealthCheck\Contracts\CheckResult`.
 
 # Usage
 Package exposes endpoints to run all checks or run each check by name:
@@ -46,8 +46,8 @@ Response contains JSON with pares of check name and true/false indicating if che
 
 ## GET /health-check/{checker}
 Where **{checker}** is a key from `config/health_check.php`, ex. `GET /health-check/database`.  
-Returns HTTP code = 200, if checker reports success, 500 otherwise. 
-Response content is payload, returned by checker.
+Returns HTTP code = 200, if checker reports success, 500 otherwise.  
+Returns payload, returned by checker. If check result is not successful, adds error message.
 
 ## Available checkers
 #### Saritasa\LaravelHealthCheck\Checkers\DatabaseHealthChecker  

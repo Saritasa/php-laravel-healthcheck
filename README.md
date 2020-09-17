@@ -18,7 +18,7 @@ $ composer require saritasa/laravel-healthcheck
 php artisan vendor:publish --tag=health_check
 ```
 
-Configure the necessary checks
+Configure the necessary checks in file `config/health_check.php`
 
 ```php
     'checkers' => [

@@ -1,6 +1,8 @@
 
 # Laravel Health Check  
 
+[![Build Status](https://github.com/Saritasa/php-laravel-healthcheck/workflows/build/badge.svg)](https://github.com/Saritasa/php-laravel-healthcheck/actions)
+[![CodeCov](https://codecov.io/gh/Saritasa/php-laravel-healthcheck/branch/master/graph/badge.svg)](https://codecov.io/gh/Saritasa/php-laravel-healthcheck)
 [![Release](https://img.shields.io/github/release/saritasa/php-laravel-healthcheck.svg)](https://github.com/Saritasa/php-laravel-healthcheck/releases)
 [![PHPv](https://img.shields.io/packagist/php-v/saritasa/laravel-healthcheck.svg)](http://www.php.net)
 [![Downloads](https://img.shields.io/packagist/dt/saritasa/laravel-healthcheck.svg)](https://packagist.org/packages/saritasa/laravel-healthcheck)

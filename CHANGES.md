@@ -1,5 +1,10 @@
 # Changes History
 
+1.1.0
+-----
++ Add `NullChecker` - use if you need to check HTTP connection to server only.
+* Declare compatibility with Laravel 9.
+
 1.0.1
 -----
 + Add error message to response body, when check failed

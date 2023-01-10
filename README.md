@@ -61,6 +61,9 @@ Checks, if redis connection is available - tries to establish connection to serv
 #### Saritasa\LaravelHealthCheck\Checkers\S3HealthChecker  
 Checks, if application can read from default S3 bucket - tries to get enumerate entries in S3 bucket.
 
+#### Saritasa\LaravelHealthCheck\Checkers\NullChecker
+Does nothing. Use if you need to check HTTP server availability only.
+
 ## Contributing  
   
 1. Create fork, checkout it  

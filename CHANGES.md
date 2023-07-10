@@ -1,5 +1,9 @@
 # Changes History
 
+1.2.0
+-----
+* Declare compatibility with Laravel 10.
+
 1.1.0
 -----
 + Add `NullChecker` - use if you need to check HTTP connection to server only.

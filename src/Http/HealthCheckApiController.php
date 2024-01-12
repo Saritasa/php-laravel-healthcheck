@@ -57,4 +57,9 @@ class HealthCheckApiController extends Controller
             ? Response::HTTP_OK
             : Response::HTTP_INTERNAL_SERVER_ERROR);
     }
+
+    public function liveness(): JsonResponse
+    {
+        return new JsonResponse(null, \Symfony\Component\HttpFoundation\Response::HTTP_NO_CONTENT);
+    }
 }

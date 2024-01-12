@@ -1,5 +1,11 @@
 # Changes History
 
+2.0.0
+-----
+New convention for routes:
+GET /liveness = GET /readness (do nothing, just check PHP availability)
+GET /health - performs actual healtchecks
+
 1.2.0
 -----
 * Declare compatibility with Laravel 10.

@@ -42,14 +42,17 @@ that must return instance of `\Saritasa\LaravelHealthCheck\Contracts\CheckResult
 
 # Usage
 Package exposes endpoints to run all checks or run each check by name:
-## GET /health-check
+## GET /health
 Runs all known checks and returns HTTP code = 200, if all checks succeeded, 500 otherwise.  
 Response contains JSON with pares of check name and true/false indicating if checker completed successfully or not.
 
-## GET /health-check/{checker}
+## GET /health/{checker}
 Where **{checker}** is a key from `config/health_check.php`, ex. `GET /health-check/database`.  
 Returns HTTP code = 200, if checker reports success, 500 otherwise.  
 Returns payload, returned by checker. If check result is not successful, adds error message.
+
+## GET /liveness, GET /readness
+Do nothing, just check availability of PHP application
 
 ## Available checkers
 #### Saritasa\LaravelHealthCheck\Checkers\DatabaseHealthChecker  

@@ -4,11 +4,11 @@ namespace Saritasa\LaravelHealthCheck\Http;
 
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Saritasa\LaravelHealthCheck\Exceptions\CheckerNotFoundException;
 use Saritasa\LaravelHealthCheck\Exceptions\InvalidCheckerException;
 use Saritasa\LaravelHealthCheck\HealthChecker;
+use Symfony\Component\HttpFoundation\Response;
 
 class HealthCheckApiController extends Controller
 {
@@ -60,6 +60,6 @@ class HealthCheckApiController extends Controller
 
     public function liveness(): JsonResponse
     {
-        return new JsonResponse(null, \Symfony\Component\HttpFoundation\Response::HTTP_NO_CONTENT);
+        return new JsonResponse(null, Response::HTTP_NO_CONTENT);
     }
 }

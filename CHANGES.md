@@ -1,5 +1,9 @@
 # Changes History
 
+2.1.1
+-----
+Declare compatibility with Laravel 11
+
 2.1.0
 -----
 Additional convention for routes:

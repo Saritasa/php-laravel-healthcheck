@@ -1,5 +1,11 @@
 # Changes History
 
+2.1.0
+-----
+Additional convention for routes:
+GET /livez = GET /readyz (do nothing, just check PHP availability)
+GET /healthz - performs actual healtchecks
+
 2.0.0
 -----
 New convention for routes:

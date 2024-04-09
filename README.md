@@ -1,4 +1,3 @@
-
 # Laravel Health Check  
 
 [![Build Status](https://github.com/Saritasa/php-laravel-healthcheck/workflows/build/badge.svg)](https://github.com/Saritasa/php-laravel-healthcheck/actions)

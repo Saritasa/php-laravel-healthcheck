@@ -1,5 +1,9 @@
 # Changes History
 
+2.1.2
+-----
+Add compatibility with Lumen 8.0+
+
 2.1.1
 -----
 Declare compatibility with Laravel 11

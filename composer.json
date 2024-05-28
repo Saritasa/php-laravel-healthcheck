@@ -11,6 +11,11 @@
             "name": "Sergey Populov",
             "email": "sergey@saritasa.com"
         }
+        ,
+        {
+            "name": "Matias Moncho",
+            "email": "matias.moncho@saritasa.com"
+        }
     ],
     "require": {
         "php": ">=7.1",

@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use Saritasa\LaravelHealthCheck\Http\HealthCheckApiController;
 
@@ -9,7 +8,7 @@ Route::get('livez', HealthCheckApiController::class.'@liveness');
 Route::get('readyz', HealthCheckApiController::class.'@liveness');
 Route::get('healthz', HealthCheckApiController::class.'@index');
 
-Route::prefix('health')->group(function (Router $router) {
+Route::group(['prefix' => 'health'], function ($router) {
     $router->get('', HealthCheckApiController::class.'@index');
     $router->get('{checker}', HealthCheckApiController::class.'@check');
 });

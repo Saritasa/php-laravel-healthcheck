@@ -39,6 +39,40 @@ You can add more custom checks - just add a class implementing
 `\Saritasa\LaravelHealthCheck\Contracts\ServiceHealthChecker` interface with single method `check()` 
 that must return instance of `\Saritasa\LaravelHealthCheck\Contracts\CheckResult`.
 
+## Laravel Lumen 8.0+
+
+Install the ```saritasa/laravel-healthcheck``` package:  
+  
+```bash  
+$ composer require saritasa/laravel-healthcheck  
+```  
+
+Create a new file ```config\health_check.php```:
+```php
+<?php
+
+use Saritasa\LaravelHealthCheck\Checkers\DatabaseHealthChecker;
+use Saritasa\LaravelHealthCheck\Checkers\RedisHealthChecker;
+use Saritasa\LaravelHealthCheck\Checkers\S3HealthChecker;
+
+return [
+    'checkers' => [
+        'database' => DatabaseHealthChecker::class,
+        'redis' => RedisHealthChecker::class,
+        's3' => S3HealthChecker::class,
+    ],
+];
+```
+
+Add the service provider in file ```bootstrap\app.php```:
+
+```php
+$app->configure('health_check');
+
+$app->instance('path.config', app()->basePath() . DIRECTORY_SEPARATOR . 'config');
+$app->register(Saritasa\LaravelHealthCheck\HealthCheckServiceProvider::class);
+``` 
+
 # Usage
 Package exposes endpoints to run all checks or run each check by name:
 ## GET /health

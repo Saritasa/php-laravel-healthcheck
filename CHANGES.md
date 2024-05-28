@@ -1,6 +1,6 @@
 # Changes History
 
-2.1.2
+2.2.0
 -----
 Add compatibility with Lumen 8.0+
 
